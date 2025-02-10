@@ -1,0 +1,164 @@
+.app__navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.18);
+    position: fixed;
+    z-index: 2;
+}
+
+.app__navbar-logo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    //scss different from css puedes hacer dentro de aca un target a la imagen o elemento dentro de la clase anidado
+    img{
+        width: 100px;
+        height: 25px;
+        //responsive media query for xl devices
+        @media screen and (min-width: 2000px){
+            width: 180px;
+            height: 40px;
+        }
+
+    }
+}
+
+.app__navbar-links{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+
+    li{
+        margin: 0 1rem;
+        cursor: pointer;
+        //or row?
+        flex-direction: column;
+
+        div{
+            //este es el punto indicador arriba del menu
+            width: 25px;
+            height: 2px;
+            background: transparent;
+            margin-bottom: 5px;
+        }
+
+        a{
+            //este color proviene del index.css que tiene ya predefinida una paleta de colores
+            color: var(--gray-color);
+            text-decoration: none;
+            flex-direction: column; //??
+            text-transform: uppercase;
+            font-weight: 550;
+            //la transicion es para que el color cambie de forma suave en el hover
+            transition: all 0.4s ease;
+            &:hover{
+                color: var(--secondary-color);
+            }
+        }
+
+        &:hover div{
+            background: var(--secondary-color);
+        }
+    }
+
+    //media query for mobile, para que no se muestre el menu en disp mayores a x px
+    @media screen and (max-width: 700px){
+        display: none;
+    }
+}
+
+// el menu hamburguesa
+
+.app__navbar-menu{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-color);
+
+    svg{
+        width: 70%;
+        height: 70%;    
+        color: var(--white-color);
+    }
+
+    div{
+        position:fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 5;
+
+        padding: 1rem;
+        width: 80%;
+        height: 100vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex-direction: column;
+
+        background: url('../../assets/menubg.jpg');
+        background-color: var(--white-color);
+        background-size: cover;
+        background-repeat: repeat;
+
+        box-shadow: 0 0 20px rgba(168,168,168,0.15);
+
+        svg{
+            width: 30px;
+            height: 30px;
+            color: var(--secondary-color);
+            margin: 0.5rem 1rem;
+        }
+
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+
+            li{
+                margin: 1rem;
+                
+                a{
+                    color: var(--gray-color);
+                    text-decoration: none;
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                    font-weight: 550;
+                    transition: all 0.4s ease;
+            
+                    &:hover{
+                        color: var(--secondary-color);
+                    }
+                }
+
+            }
+        }
+        // si supera estos pixeles el menu se ocultara, cambiar en los dos media queries
+        @media screen and (min-width: 700px){
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 700px){
+        display: none;
+    }
+}
